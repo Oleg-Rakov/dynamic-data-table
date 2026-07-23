@@ -1,5 +1,17 @@
+import { useTableData } from './features/data-table/model/useTableData';
+
 function App() {
-  return <h1>Dynamic data table</h1>;
+  const { loading, rows, columns } = useTableData();
+
+  if (loading) {
+    return <p>Loading…</p>;
+  }
+
+  return (
+    <p>
+      Loaded {rows.length} rows, columns: {columns.join(', ')}
+    </p>
+  );
 }
 
 export default App;
