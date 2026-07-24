@@ -44,6 +44,7 @@ export function EditableCell({
       ) : (
         <CellDisplay
           type="button"
+          title={value}
           onClick={() => {
             setDraft(value);
             setEditing(true);

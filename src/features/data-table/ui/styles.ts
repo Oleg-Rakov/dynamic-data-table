@@ -1,7 +1,27 @@
-import styled, { css } from 'styled-components';
+import styled, { css, createGlobalStyle } from 'styled-components';
+
+export const GlobalStyle = createGlobalStyle`
+  body {
+    margin: 0;
+    background: #fafafa;
+    color: #222;
+    font-family: sans-serif;
+  }
+`;
+
+export const Page = styled.main`
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 32px 16px;
+`;
+
+export const PageTitle = styled.h1`
+  margin: 0 0 20px;
+  font-size: 22px;
+`;
 
 // fixed width so header and rows have equal total width and share one horizontal scroll.
-export const COLUMN_WIDTH = 160;
+export const COLUMN_WIDTH = 200;
 export const ACTIONS_WIDTH = 88;
 
 const gridTemplate = css<{ $columnCount: number }>`
@@ -61,6 +81,10 @@ export const CellDisplay = styled.button`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+
+  &:hover {
+    background: #eef4fb;
+  }
 `;
 
 export const CellInput = styled.input<{ $invalid: boolean }>`
