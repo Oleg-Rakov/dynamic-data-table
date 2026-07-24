@@ -3,6 +3,8 @@
 React 17 + TypeScript (strict) + styled-components. Dynamic columns/rows, inline
 edit, row delete, add-row modal. No table/form libraries.
 
+**Live demo:** https://dynamic-data-table-test.netlify.app/
+
 ## Run
 
 ```bash
