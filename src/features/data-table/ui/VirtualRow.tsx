@@ -15,6 +15,7 @@ export function VirtualRow({
       rowIndex={index}
       style={style}
       updateCell={data.updateCell}
+      deleteRow={data.deleteRow}
     />
   );
 }

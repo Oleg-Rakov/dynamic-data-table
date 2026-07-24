@@ -2,6 +2,13 @@ import styled, { css } from 'styled-components';
 
 // fixed width so header and rows have equal total width and share one horizontal scroll.
 export const COLUMN_WIDTH = 160;
+export const ACTIONS_WIDTH = 88;
+
+const gridTemplate = css<{ $columnCount: number }>`
+  grid-template-columns:
+    repeat(${(p) => p.$columnCount}, ${COLUMN_WIDTH}px)
+    ${ACTIONS_WIDTH}px;
+`;
 
 export const Scroll = styled.div`
   overflow-x: auto;
@@ -16,7 +23,7 @@ export const Table = styled.div`
 
 export const HeaderRow = styled.div<{ $columnCount: number }>`
   display: grid;
-  grid-template-columns: repeat(${(p) => p.$columnCount}, ${COLUMN_WIDTH}px);
+  ${gridTemplate};
   background: #f5f5f5;
   font-weight: 600;
   border-bottom: 1px solid #ddd;
@@ -28,7 +35,7 @@ export const HeaderCell = styled.div`
 
 export const Row = styled.div<{ $columnCount: number }>`
   display: grid;
-  grid-template-columns: repeat(${(p) => p.$columnCount}, ${COLUMN_WIDTH}px);
+  ${gridTemplate};
   border-bottom: 1px solid #eee;
   box-sizing: border-box;
 `;
@@ -61,4 +68,24 @@ export const CellInput = styled.input<{ $invalid: boolean }>`
   width: 100%;
   border: 1px solid ${(p) => (p.$invalid ? '#d33' : '#4a90e2')};
   outline: none;
+`;
+
+export const ActionsCell = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const DeleteButton = styled.button`
+  border: 1px solid #d33;
+  background: none;
+  color: #d33;
+  border-radius: 4px;
+  padding: 4px 10px;
+  cursor: pointer;
+
+  &:hover {
+    background: #d33;
+    color: #fff;
+  }
 `;

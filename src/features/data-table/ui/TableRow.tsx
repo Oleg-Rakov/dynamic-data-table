@@ -1,8 +1,12 @@
 import React from 'react';
 import type { CSSProperties } from 'react';
-import type { TableRow as TableRowData, UpdateCell } from '../model/types';
+import type {
+  DeleteRow,
+  TableRow as TableRowData,
+  UpdateCell,
+} from '../model/types';
 import { EditableCell } from './EditableCell';
-import { Row } from './styles';
+import { ActionsCell, DeleteButton, Row } from './styles';
 
 interface TableRowProps {
   row: TableRowData;
@@ -10,6 +14,7 @@ interface TableRowProps {
   rowIndex: number;
   style: CSSProperties;
   updateCell: UpdateCell;
+  deleteRow: DeleteRow;
 }
 
 function TableRowComponent({
@@ -18,6 +23,7 @@ function TableRowComponent({
   rowIndex,
   style,
   updateCell,
+  deleteRow,
 }: TableRowProps) {
   return (
     <Row
@@ -35,6 +41,15 @@ function TableRowComponent({
           onCommit={updateCell}
         />
       ))}
+      <ActionsCell role="cell">
+        <DeleteButton
+          type="button"
+          aria-label="Delete row"
+          onClick={() => deleteRow(row.id)}
+        >
+          Delete
+        </DeleteButton>
+      </ActionsCell>
     </Row>
   );
 }

@@ -9,8 +9,11 @@ export type UpdateCell = (
   value: string,
 ) => void;
 
+export type DeleteRow = (rowId: string) => void;
+
 export interface TableItemData {
   rows: TableRow[];
   columns: string[];
   updateCell: UpdateCell;
+  deleteRow: DeleteRow;
 }
