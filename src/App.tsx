@@ -1,17 +1,7 @@
-import { useTableData } from './features/data-table/model/useTableData';
+import { DataTable } from './features/data-table/ui/DataTable';
 
 function App() {
-  const { loading, rows, columns } = useTableData();
-
-  if (loading) {
-    return <p>Loading…</p>;
-  }
-
-  return (
-    <p>
-      Loaded {rows.length} rows, columns: {columns.join(', ')}
-    </p>
-  );
+  return <DataTable />;
 }
 
 export default App;
