@@ -89,3 +89,94 @@ export const DeleteButton = styled.button`
     color: #fff;
   }
 `;
+
+export const Toolbar = styled.div`
+  margin-bottom: 12px;
+`;
+
+export const AddButton = styled.button`
+  border: 1px solid #4a90e2;
+  background: #4a90e2;
+  color: #fff;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font: inherit;
+  cursor: pointer;
+`;
+
+export const ModalOverlay = styled.div`
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const ModalDialog = styled.div`
+  background: #fff;
+  border-radius: 8px;
+  padding: 24px;
+  width: 320px;
+  max-width: calc(100vw - 32px);
+  max-height: calc(100vh - 32px);
+  overflow-y: auto;
+  box-sizing: border-box;
+  font-family: sans-serif;
+`;
+
+export const ModalTitle = styled.h2`
+  margin: 0 0 16px;
+  font-size: 18px;
+`;
+
+export const FieldLabel = styled.label`
+  display: block;
+  margin-bottom: 12px;
+  font-size: 14px;
+`;
+
+export const FieldInput = styled.input<{ $invalid: boolean }>`
+  display: block;
+  width: 100%;
+  margin-top: 4px;
+  padding: 8px;
+  box-sizing: border-box;
+  font: inherit;
+  border: 1px solid ${(p) => (p.$invalid ? '#d33' : '#ccc')};
+  border-radius: 4px;
+  outline: none;
+`;
+
+export const FieldError = styled.span`
+  display: block;
+  margin-top: 4px;
+  color: #d33;
+  font-size: 12px;
+`;
+
+export const ModalActions = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 20px;
+`;
+
+export const SecondaryButton = styled.button`
+  border: 1px solid #ccc;
+  background: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font: inherit;
+  cursor: pointer;
+`;
+
+export const PrimaryButton = styled.button`
+  border: 1px solid #4a90e2;
+  background: #4a90e2;
+  color: #fff;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font: inherit;
+  cursor: pointer;
+`;

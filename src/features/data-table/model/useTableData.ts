@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { useNotice } from '../../../shared/useNotice';
 import { fetchTableData } from '../api/fetchTableData';
 import { getColumns, updateCellValue } from './table.utils';
-import type { DeleteRow, TableRow, UpdateCell } from './types';
+import type { AddRow, DeleteRow, TableRow, UpdateCell } from './types';
 
 interface TableState {
   loading: boolean;
@@ -10,6 +10,7 @@ interface TableState {
   columns: string[];
   updateCell: UpdateCell;
   deleteRow: DeleteRow;
+  addRow: AddRow;
   notice: string;
 }
 
@@ -47,5 +48,14 @@ export function useTableData(): TableState {
     [notify],
   );
 
-  return { loading, rows, columns, updateCell, deleteRow, notice };
+  const addRow = useCallback<AddRow>(
+    (data) => {
+      // prepend; DataTable scrolls the list to the top to reveal it.
+      setRows((prevRows) => [{ id: crypto.randomUUID(), data }, ...prevRows]);
+      notify('Row added');
+    },
+    [notify],
+  );
+
+  return { loading, rows, columns, updateCell, deleteRow, addRow, notice };
 }

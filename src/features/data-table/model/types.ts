@@ -11,6 +11,8 @@ export type UpdateCell = (
 
 export type DeleteRow = (rowId: string) => void;
 
+export type AddRow = (data: Record<string, string>) => void;
+
 export interface TableItemData {
   rows: TableRow[];
   columns: string[];

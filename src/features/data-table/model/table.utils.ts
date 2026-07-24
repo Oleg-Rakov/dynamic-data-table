@@ -8,6 +8,13 @@ export function isCellValid(value: string): boolean {
   return value.trim().length > 0;
 }
 
+export function findEmptyFields(
+  columns: string[],
+  values: Record<string, string>,
+): string[] {
+  return columns.filter((column) => !isCellValid(values[column] ?? ''));
+}
+
 export function updateCellValue(
   rows: TableRow[],
   rowId: string,
