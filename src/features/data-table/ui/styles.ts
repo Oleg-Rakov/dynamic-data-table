@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 // fixed width so header and rows have equal total width and share one horizontal scroll.
 export const COLUMN_WIDTH = 160;
@@ -34,8 +34,31 @@ export const Row = styled.div<{ $columnCount: number }>`
 `;
 
 export const Cell = styled.div`
+  overflow: hidden;
+`;
+
+const cellBox = css`
+  height: 100%;
   padding: 12px;
+  box-sizing: border-box;
+  font: inherit;
+`;
+
+export const CellDisplay = styled.button`
+  ${cellBox};
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: none;
+  cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+`;
+
+export const CellInput = styled.input<{ $invalid: boolean }>`
+  ${cellBox};
+  width: 100%;
+  border: 1px solid ${(p) => (p.$invalid ? '#d33' : '#4a90e2')};
+  outline: none;
 `;

@@ -1,12 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { fetchTableData } from '../api/fetchTableData';
-import { getColumns } from './table.utils';
-import type { TableRow } from './types';
+import { getColumns, updateCellValue } from './table.utils';
+import type { TableRow, UpdateCell } from './types';
 
 interface TableState {
   loading: boolean;
   rows: TableRow[];
   columns: string[];
+  updateCell: UpdateCell;
 }
 
 export function useTableData(): TableState {
@@ -28,5 +29,11 @@ export function useTableData(): TableState {
     };
   }, []);
 
-  return { loading, rows, columns };
+  const updateCell = useCallback<UpdateCell>(
+    (rowId, columnKey, value) =>
+      setRows((cur) => updateCellValue(cur, rowId, columnKey, value)),
+    [],
+  );
+
+  return { loading, rows, columns, updateCell };
 }

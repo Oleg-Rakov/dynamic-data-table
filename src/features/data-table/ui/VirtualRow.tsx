@@ -14,6 +14,7 @@ export function VirtualRow({
       columns={data.columns}
       rowIndex={index}
       style={style}
+      updateCell={data.updateCell}
     />
   );
 }

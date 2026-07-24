@@ -9,12 +9,12 @@ const ROW_HEIGHT = 48;
 const BODY_HEIGHT = 600;
 
 export function DataTable() {
-  const { loading, rows, columns } = useTableData();
+  const { loading, rows, columns, updateCell } = useTableData();
 
   // stable itemData keeps memoized rows from re-rendering on unrelated state changes.
   const itemData = useMemo<TableItemData>(
-    () => ({ rows, columns }),
-    [rows, columns],
+    () => ({ rows, columns, updateCell }),
+    [rows, columns, updateCell],
   );
 
   if (loading) {

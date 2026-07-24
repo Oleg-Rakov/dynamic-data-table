@@ -1,16 +1,24 @@
 import React from 'react';
 import type { CSSProperties } from 'react';
-import type { TableRow as TableRowData } from '../model/types';
-import { Row, Cell } from './styles';
+import type { TableRow as TableRowData, UpdateCell } from '../model/types';
+import { EditableCell } from './EditableCell';
+import { Row } from './styles';
 
 interface TableRowProps {
   row: TableRowData;
   columns: string[];
   rowIndex: number;
   style: CSSProperties;
+  updateCell: UpdateCell;
 }
 
-function TableRowComponent({ row, columns, rowIndex, style }: TableRowProps) {
+function TableRowComponent({
+  row,
+  columns,
+  rowIndex,
+  style,
+  updateCell,
+}: TableRowProps) {
   return (
     <Row
       role="row"
@@ -19,9 +27,13 @@ function TableRowComponent({ row, columns, rowIndex, style }: TableRowProps) {
       $columnCount={columns.length}
     >
       {columns.map((column) => (
-        <Cell key={column} role="cell">
-          {row.data[column]}
-        </Cell>
+        <EditableCell
+          key={column}
+          rowId={row.id}
+          columnKey={column}
+          value={row.data[column]}
+          onCommit={updateCell}
+        />
       ))}
     </Row>
   );
