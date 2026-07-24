@@ -22,7 +22,7 @@ export const PageTitle = styled.h1`
 
 // fixed width so header and rows have equal total width and share one horizontal scroll.
 export const COLUMN_WIDTH = 200;
-export const ACTIONS_WIDTH = 88;
+export const ACTIONS_WIDTH = 104;
 
 const gridTemplate = css<{ $columnCount: number }>`
   grid-template-columns:

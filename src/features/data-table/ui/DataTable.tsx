@@ -1,4 +1,5 @@
 import { useCallback, useMemo, useRef, useState } from 'react';
+import type { CSSProperties } from 'react';
 import { FixedSizeList } from 'react-window';
 import { useTableData } from '../model/useTableData';
 import type { TableItemData } from '../model/types';
@@ -18,6 +19,7 @@ import {
 
 const ROW_HEIGHT = 48;
 const BODY_HEIGHT = 600;
+const LIST_STYLE: CSSProperties = { overflowX: 'hidden' };
 
 export function DataTable() {
   const { loading, rows, columns, updateCell, deleteRow, addRow, notice } =
@@ -80,6 +82,7 @@ export function DataTable() {
               itemCount={rows.length}
               itemData={itemData}
               itemKey={(index, data) => data.rows[index].id}
+              style={LIST_STYLE}
             >
               {VirtualRow}
             </FixedSizeList>
