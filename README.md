@@ -28,15 +28,17 @@ interface TableRow {
 // table receives TableRow[]
 ```
 
-- Columns = `Object.keys(rows[0].data)` → dynamic columns for free.
+- Columns = `Object.keys(rows[0].data)` → dynamic columns for free. Invariant:
+  every row is expected to share the same keys (columns come from the first row).
 - Add-row form is built from the same keys → one source of truth for "form
   fields come from the data".
 - `id` outside `data` → stable React key / react-window `itemKey`, never a column.
 - `string` values → text input + `trim()` "not empty" validation. Per-column
   typing is a natural extension, out of scope.
 
-Rejected "array of arrays + header row": loses column names, so the form can't
-be derived from the data.
+Rejected "array of arrays + header row": values are bound to columns positionally
+(by index), which is fragile and not self-describing. Keying values by name keeps
+each row self-contained and lets the form derive its fields from the data directly.
 
 ## Mock API
 
